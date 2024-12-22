@@ -1,22 +1,22 @@
-package routes
+package api
 
 import (
 	"github.com/go-chi/chi"
 )
 
 // функция, которая создаёт маршруты(пути)
-func registerRoutes(r *chi.Mux) {
+func RegisterRoutes(r *chi.Mux) {
 
 	//главная
-	r.Get("/", homeHandler)
+	r.Get("/", HomeHandler)
 
 	//авторизация
-	r.Get("/auth", authHandler)
+	r.Get("/auth", AuthHandler)
 
 	//личный кабинет
-	r.Get("/user", userPageHandler)
+	r.Get("/user", UserPageHandler)
 
 	//история встреч
-	r.Get("/story", storyHandler)
+	r.Get("/story", StoryHandler)
 
 }
