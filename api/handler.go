@@ -1,5 +1,3 @@
 package api
 
-func handle() {
-
-}
+func handle() {}
