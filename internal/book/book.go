@@ -5,5 +5,8 @@ TODO:
 	-прикрутить базу данных, чтобы структура ссылалась на БД
 */
 type book struct {
-	// Id - ссылочный тип на бд
+	ID     int
+	Name   string
+	Author string
+	Genre  string
 }

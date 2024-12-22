@@ -5,5 +5,7 @@ TODO:
 	-прикрутить базу данных, чтобы структура ссылалась на БД
 */
 type user struct {
-	// Id - ссылочный тип на бд
+	ID       int
+	Username string
+	Password string
 }
