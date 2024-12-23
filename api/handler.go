@@ -12,6 +12,7 @@ func AuthHandler(w http.ResponseWriter, r *http.Request) {
 
 func UserPageHandler(w http.ResponseWriter, r *http.Request) {
 	// логика страницы пользователя
+
 }
 
 func StoryHandler(w http.ResponseWriter, r *http.Request) {
