@@ -17,3 +17,9 @@ TODO:
 		-Обратный отчёт о встрече
 		-оповещение по имейлу/смс/на что будет возможность
 */
+
+type eventer interface {
+	createEvent()
+	updateEvent()
+	deleteEvent()
+}
