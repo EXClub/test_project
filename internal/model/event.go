@@ -1,6 +1,6 @@
 package model
 
-type event struct {
+type Event struct {
 	/*
 		-время и дата
 		-книга

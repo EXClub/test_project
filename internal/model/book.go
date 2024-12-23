@@ -3,7 +3,7 @@ package model
 /*
 этот файл только описывает книгу как объект для взаимодействия с БД
 */
-type book struct {
+type Book struct {
 	ID     int
 	Name   string
 	Author string
