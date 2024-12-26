@@ -8,15 +8,15 @@ import (
 func RegisterRoutes(r *chi.Mux) {
 
 	//главная
-	r.Get("/", HomeHandler)
+	r.Get("/", homeHandler)
 
 	//авторизация
-	r.Get("/auth", AuthHandler)
+	r.Get("/auth", authHandler)
 
 	//личный кабинет
-	r.Get("/user", UserPageHandler)
+	r.Get("/user", userPageHandler)
 
 	//история встреч
-	r.Get("/story", StoryHandler)
+	r.Get("/story", storyHandler)
 
 }
