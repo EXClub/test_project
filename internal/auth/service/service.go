@@ -21,7 +21,7 @@ func NewAuthService() *AuthService {
 
 func (s *AuthService) GenerateHash(password []byte) ([]byte, error) {
 	if len(string(password)) <= 0 {
-		return nil, errors.New("password can ot be empty")
+		return nil, errors.New("password can not be empty")
 	}
 
 	hash, err := bcrypt.GenerateFromPassword(password, passwordCost)
