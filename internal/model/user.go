@@ -9,30 +9,31 @@ import (
 /*
 этот файл только описывает пользователя как объект для взаимодействия с БД
 */
+
 type User struct {
 	ID       int
 	Username string
-	hash     []byte
-	token    string
-	isAdmin  bool
+	Hash     []byte
+	Token    string
+	IsAdmin  bool
 }
 
-type crypter interface {
-	hashPassword(password string)
-	checkPassAndHash(password string, hash []byte)
+type Сrypter interface {
+	HashPassword(password string)
+	ComparePassHash(password string, hash []byte)
 }
 
-func (u *User) hashPassword(password string) {
+func (u *User) HashPassword(password string) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	u.hash = hashedPassword
+	u.Hash = hashedPassword
 }
 
-func (u *User) checkPassAndHash(password string, hash []byte) error {
-	err := bcrypt.CompareHashAndPassword(u.hash, []byte(password))
+func (u *User) ComparePassHash(password string, hash []byte) error {
+	err := bcrypt.CompareHashAndPassword(hash, []byte(password))
 	if err != nil {
 		return err
 	} else {
