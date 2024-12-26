@@ -1,0 +1,12 @@
+---
+
+is_debug: true
+listen:
+  type: port
+  port: 5432
+storage:
+  host: 91.186.198.14
+  port: 5432
+  database: default_db
+  username: gen_user
+  password: G%RoiU\@2nCldd
