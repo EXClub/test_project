@@ -1,13 +1,11 @@
 package api
 
 import (
-	"fmt"
 	"net/http"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	// логика главной
-	fmt.Fprintf(w, "Hello World!")
 }
 
 func authHandler(w http.ResponseWriter, r *http.Request) {
