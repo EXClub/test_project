@@ -12,6 +12,6 @@ func main() {
 	r := chi.NewRouter()
 	//привязываем роутер к маршрутам
 	api.RegisterRoutes(r)
-
 	http.ListenAndServe(":8080", r)
+
 }

@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/EXClub/test_project.git/internal/config"
+	"github.com/EXClub/test_project.git/internal/utils/config"
 	repeatable "github.com/EXClub/test_project.git/pkg/utils"
 	"github.com/jackc/pgconn"
 	"github.com/jackc/pgx/v4"

@@ -18,6 +18,6 @@ func (s *UserService) AddUser() error {
 	if err := s.repo.SaveUser(); err != nil {
 		return err
 	}
-	log.Println("Пользовтаель успешно добавлен")
+	log.Println("Пользователь успешно добавлен")
 	return nil
 }
