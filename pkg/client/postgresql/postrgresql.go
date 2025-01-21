@@ -3,14 +3,11 @@ package postgresql
 import (
 	"context"
 	"fmt"
-	"log"
-	"time"
+	"os"
 
-	"github.com/EXClub/test_project.git/internal/config"
-	repeatable "github.com/EXClub/test_project.git/pkg/utils"
 	"github.com/jackc/pgconn"
-	"github.com/jackc/pgx/v4"
-	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 //файл инициализации клиента постгреса
@@ -22,32 +19,10 @@ type Client interface {
 	Begin(ctx context.Context) (pgx.Tx, error)
 }
 
-func NewClient(ctx context.Context, maxAttempts int, sc config.StorageConfig) (pool *pgxpool.Pool, err error) {
-	/*
-			DSN (Data Source Name) — это строка, используемая для определения источника данных,
-		к которому вы хотите подключиться,в контексте подключения к базе данных.
-			DSN содержит информацию о типе базы данных, местоположении, имени пользователя,
-		пароле и других параметрах, необходимых для установления соединения с базой данных.
-	*/
-
-	dsn := fmt.Sprintf("postgresql://%s:%s@%s:%s/%s", sc.Username, sc.Password, sc.Host, sc.Port, sc.Database)
-	err = repeatable.DoWithTries(func() error {
-		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-		defer cancel()
-		// Подключаемся к пулу соединений
-		pool, err = pgxpool.Connect(ctx, dsn)
-		if err != nil {
-			return err
-		}
-
-		// Если подключение успешно, возвращаем nil
-		return nil
-	}, maxAttempts, 5*time.Second)
-
-	// Обработка ошибки после попыток подключения
+func NewClient(ctx context.Context) (*pgxpool.Pool, error) {
+	dbpool, err := pgxpool.New(ctx, os.Getenv("DATABASE_URL"))
 	if err != nil {
-		log.Fatal("error do with tries postgresql", err)
+		return nil, fmt.Errorf("Unable to create conntection pool: %v\n", err)
 	}
-
-	return pool, nil
+	return dbpool, err
 }
